@@ -1,0 +1,37 @@
+{
+  "tones": [
+    "streetwise charmer with quick wit",
+    "steady merchant with a generous streak",
+    "stern sergeant who softens around stories",
+    "optimistic tinkerer always refining a gadget"
+  ],
+  "professions": [
+    "caravan broker",
+    "city guard sergeant",
+    "tinker-smith",
+    "dockside mediator"
+  ],
+  "ageBrackets": {
+    "young": {
+      "range": [16, 26],
+      "descriptions": [
+        "moves with restless ambition and bright optimism",
+        "seeks chances to rise above her station"
+      ]
+    },
+    "adult": {
+      "range": [26, 48],
+      "descriptions": [
+        "keeps ledgers of debts and favors from a decade of work",
+        "wields seasoned confidence earned in loud marketplaces"
+      ]
+    },
+    "elder": {
+      "range": [48, 80],
+      "descriptions": [
+        "seen enough schemes to spot trouble early",
+        "treats knowledge and connections as her favored tools"
+      ]
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "tones": [
+    "poised courtier with distant warmth",
+    "wandering lorekeeper hungry for secrets",
+    "quiet warden protecting hidden groves",
+    "sunny artisan eager to trade stories"
+  ],
+  "professions": [
+    "emerald warden",
+    "balladeer",
+    "arcane scribe",
+    "silver-dagger scout"
+  ],
+  "ageBrackets": {
+    "young": {
+      "range": [60, 120],
+      "descriptions": [
+        "still testing traditions and curious about the wider realms",
+        "eager to prove that youthful elves can act swiftly"
+      ]
+    },
+    "mature": {
+      "range": [120, 260],
+      "descriptions": [
+        "balances centuries of etiquette with pragmatic instincts",
+        "seasoned by travels between old forest courts and bustling ports"
+      ]
+    },
+    "elder": {
+      "range": [260, 380],
+      "descriptions": [
+        "carries memory-laden eyes and moves with patient grace",
+        "uses tradition as a shield while quietly adapting to change"
+      ]
+    }
+  }
+}

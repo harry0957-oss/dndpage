@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D&D NPC Crafter</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">GM Toolkit</p>
+      <h1>D&D NPC Crafter</h1>
+      <p class="lede">Generate race-authentic non-player characters with names, personalities, hooks, and an easy vocal guide in seconds.</p>
+      <div class="hero-actions">
+        <button class="primary" id="generateBtn">Generate NPC</button>
+        <button class="ghost" id="copyBtn">Copy Summary</button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h2>Inputs</h2>
+      <div class="field-group">
+        <label for="race">Race</label>
+        <select id="race"></select>
+      </div>
+      <div class="field-group">
+        <label for="gender">Gender</label>
+        <select id="gender">
+          <option value="random">Random</option>
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+          <option value="neutral">Non-binary</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label for="tone">Tone</label>
+        <select id="tone"></select>
+      </div>
+      <div class="field-group">
+        <label for="profession">Profession</label>
+        <select id="profession"></select>
+      </div>
+      <div class="field-inline">
+        <div class="field-group">
+          <label for="ageBracket">Age bracket</label>
+          <select id="ageBracket"></select>
+        </div>
+        <div class="field-group">
+          <label for="location">Home/Locale</label>
+          <input id="location" type="text" placeholder="Port city, forest village...">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="results">
+      <div class="result-card">
+        <header class="result-header">
+          <div>
+            <p class="eyebrow">NPC Identity</p>
+            <h2 id="npcName">—</h2>
+            <p id="npcMeta" class="meta">Race · Gender · Age</p>
+          </div>
+          <p id="npcHook" class="tag">Ready hook</p>
+        </header>
+        <div class="grid">
+          <article>
+            <h3>Physical Description</h3>
+            <p id="npcLook">—</p>
+          </article>
+          <article>
+            <h3>Backstory</h3>
+            <p id="npcBackstory">—</p>
+          </article>
+          <article>
+            <h3>Motivations & Goals</h3>
+            <ul id="npcMotivations"></ul>
+          </article>
+          <article>
+            <h3>How to Voice</h3>
+            <p id="npcVoice">—</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Build rich characters in a few clicks. Save, share, or tweak as needed for your table.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "tones": [
+    "amiable guide who loves tall tales",
+    "cautious investigator with a dry sense of humor",
+    "boisterous mercenary captain",
+    "soft-spoken scholar hiding sharp instincts"
+  ],
+  "professions": [
+    "road guide",
+    "investigator",
+    "free company captain",
+    "traveling scholar"
+  ],
+  "ageBrackets": {
+    "young": {
+      "range": [16, 24],
+      "descriptions": [
+        "hungry for coin and validation",
+        "throws himself into schemes just to see what happens"
+      ]
+    },
+    "adult": {
+      "range": [24, 52],
+      "descriptions": [
+        "calculates risks before stepping into danger",
+        "leans on a network of favors from roads traveled"
+      ]
+    },
+    "elder": {
+      "range": [52, 80],
+      "descriptions": [
+        "prefers apprentices to do the lifting while he strategizes",
+        "finds joy in retelling lessons from old campaigns"
+      ]
+    }
+  }
+}
