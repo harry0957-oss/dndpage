@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NPC Data Admin Helper</title>
+  <link rel="stylesheet" href="/public/css/styles.css" />
+</head>
+<body class="dark">
+  <div class="admin-wrap">
+    <div class="card">
+      <p class="eyebrow">Local Helper</p>
+      <h1>NPC Data Preview</h1>
+      <p class="lede">This page runs entirely in your browser. Load JSON files to validate structure and preview contents before committing them to /data for deployment.</p>
+      <div class="admin-grid" id="uploadGrid"></div>
+      <p class="muted small">To update the live site, commit the validated JSON files into the /data directory of the repository and redeploy. No server upload is performed here.</p>
+    </div>
+  </div>
+
+  <script src="/public/js/admin-helper.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "_comment": "Age ranges per race for potential future random age logic. Values are inclusive [min, max] pairs.",
+  "races": {
+    "human": {
+      "adult": [18, 40],
+      "middle": [41, 65],
+      "elder": [66, 90]
+    },
+    "elf": {
+      "adult": [60, 200],
+      "middle": [201, 400],
+      "elder": [401, 700]
+    }
+  }
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NPC Generator | Goblin's Village</title>
+  <link rel="stylesheet" href="/public/css/styles.css" />
+</head>
+<body class="dark">
+  <div class="page">
+    <header class="site-header">
+      <a class="brand" href="/">Goblin's Village</a>
+      <nav class="nav-links">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link active" href="/generators.html">Generators</a>
+      </nav>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">GM Tools</p>
+      <h1>NPC Generator</h1>
+      <p class="lede">Craft ready-to-play NPCs with names, personalities, hooks, voice tips, and visual prompts inspired by dark fantasy taverns and bustling cities.</p>
+    </section>
+
+    <div class="generator-layout">
+      <section class="card input-card">
+        <div class="card-head">
+          <h3>Inputs</h3>
+          <p class="sub">Choose specifics or roll the dice with Random options.</p>
+        </div>
+        <form id="npcForm" class="form-grid">
+          <label>
+            <span>Race</span>
+            <select id="raceSelect" required></select>
+          </label>
+          <label>
+            <span>Gender</span>
+            <select id="genderSelect" required></select>
+          </label>
+          <label>
+            <span>Age</span>
+            <input type="number" id="ageInput" min="10" max="750" value="30" />
+          </label>
+          <label>
+            <span>Town / Locale</span>
+            <select id="townSelect"></select>
+          </label>
+          <label>
+            <span>Profession</span>
+            <select id="professionSelect"></select>
+          </label>
+          <label>
+            <span>Aesthetic / Visual Style</span>
+            <select id="aestheticSelect"></select>
+          </label>
+        </form>
+        <div class="form-actions">
+          <button id="generateBtn" class="btn primary">Generate NPC</button>
+          <button id="copyBtn" class="btn">Copy Summary</button>
+        </div>
+        <p class="muted small">All options are driven by JSON files in /data so you can extend races, professions, towns, and aesthetics without changing the code.</p>
+      </section>
+
+      <section class="output-column">
+        <div class="card">
+          <div class="card-head">
+            <h3>Identity</h3>
+            <p class="sub">Name, origin, and day-to-day role.</p>
+          </div>
+          <div class="identity" id="identity"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Physical Description</h3>
+            <p class="sub">First impressions in the torchlight.</p>
+          </div>
+          <p id="physical"></p>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Backstory</h3>
+            <p class="sub">History that shapes their choices.</p>
+          </div>
+          <p id="backstory"></p>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Motivations & Goals</h3>
+            <p class="sub">Use 2–4 threads to drive scenes.</p>
+          </div>
+          <ul id="motivations"></ul>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Hook</h3>
+            <p class="sub">A tag to pull players in.</p>
+          </div>
+          <div id="hook" class="pill"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>How to Voice</h3>
+            <p class="sub">Tone and cadence cues.</p>
+          </div>
+          <p id="voice"></p>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Visuals</h3>
+            <p class="sub">Prompt-style art direction.</p>
+          </div>
+          <p id="visual"></p>
+        </div>
+      </section>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite">Summary copied</div>
+  </div>
+
+  <script src="/public/js/npcGenerator.js"></script>
+  <script src="/public/js/generators-page.js"></script>
+</body>
+</html>

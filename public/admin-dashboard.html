@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NPC Crafter Admin Dashboard</title>
+  <link rel="stylesheet" href="/public/css/styles.css" />
+</head>
+<body class="dark">
+  <div class="page">
+    <header class="hero" style="align-items: center;">
+      <div class="hero-left">
+        <p class="eyebrow">Admin</p>
+        <h1>NPC Crafter Dashboard</h1>
+        <p class="lede">Upload and validate the JSON files that drive the generator. Changes take effect immediately.</p>
+      </div>
+      <div class="hero-right card">
+        <h2>Upload JSON File</h2>
+        <p class="sub">Allowed files: config.json, names.json, professions.json, traits.json, towns.json</p>
+        <form class="admin-grid" method="POST" enctype="multipart/form-data" action="/admin/upload">
+          <input type="file" name="dataFile" accept="application/json" required />
+          <button class="btn primary" type="submit">Upload & Replace</button>
+        </form>
+        <form method="POST" action="/admin/logout" style="margin-top: 12px;">
+          <button class="btn" type="submit">Logout</button>
+        </form>
+      </div>
+    </header>
+
+    <section class="card" style="margin-top: 10px;">
+      <div class="card-head">
+        <h3>Loaded Files</h3>
+        <p class="sub">Files stored in /data on the server.</p>
+      </div>
+      <table class="table-like" id="fileTable">
+        <thead>
+          <tr>
+            <th>Filename</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div style="margin-top: 12px; display: flex; gap: 10px; align-items: center;">
+        <button class="btn" id="validateBtn" type="button">Validate JSON</button>
+        <span id="validateStatus" class="badge">Ready</span>
+      </div>
+    </section>
+  </div>
+
+  <script src="/public/js/admin.js"></script>
+</body>
+</html>
