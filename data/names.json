@@ -1,0 +1,24 @@
+{
+  "races": {
+    "human": {
+      "male": ["Darin Crowe", "Harlan Pike"],
+      "female": ["Anna Crowe", "Brina Fletcher"],
+      "neutral": ["Rowan Vale", "Ash Keld"]
+    },
+    "elf": {
+      "male": ["Aerithil Moonsong"],
+      "female": ["Lia Elenwen"],
+      "neutral": ["Caelren"]
+    },
+    "dwarf": {
+      "male": ["Fargrim Ironfist"],
+      "female": ["Hilda Ironfist"],
+      "neutral": ["Keera Granite"]
+    },
+    "goblin": {
+      "male": ["Grik Snubnose"],
+      "female": ["Snikka Quickfingers"],
+      "neutral": ["Razz"]
+    }
+  }
+}
