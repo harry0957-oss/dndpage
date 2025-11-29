@@ -1,5 +1,5 @@
 {
-  "notes": "Extend with new race keys or add more names under each gender (male, female, neutral).",
+  "notes": "Names grouped by race and gender. Add more arrays per gender or add new race keys.",
   "races": {
     "human": {
       "male": ["Darin Crowe", "Harlan Pike"],

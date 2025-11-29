@@ -1,34 +1,54 @@
-const preview = document.getElementById('preview');
-const inputs = document.querySelectorAll('input[type="file"][data-key]');
-
-const validators = {
-  config: (json) => Array.isArray(json.races) && Array.isArray(json.genders),
-  names: (json) => !!json.races,
-  professions: (json) => Array.isArray(json.professions),
-  towns: (json) => Array.isArray(json.towns),
-  traits: (json) => Array.isArray(json.traits),
-  ages: (json) => !!json.races,
+const inputs = {
+  config: document.getElementById('configInput'),
+  names: document.getElementById('namesInput'),
+  professions: document.getElementById('professionsInput'),
+  towns: document.getElementById('townsInput'),
+  traits: document.getElementById('traitsInput'),
+  ages: document.getElementById('agesInput'),
 };
 
-function format(results) {
-  return results
-    .map((r) => `${r.key}: ${r.ok ? 'OK' : 'Invalid'}${r.error ? ` - ${r.error}` : ''}`)
-    .join('\n');
-}
+const preview = document.getElementById('preview');
+const loaded = {};
 
-async function handleFile(event) {
-  const file = event.target.files?.[0];
-  const key = event.target.dataset.key;
-  if (!file) return;
-
-  try {
-    const text = await file.text();
-    const json = JSON.parse(text);
-    const valid = validators[key] ? validators[key](json) : true;
-    preview.textContent = `${key}.json\n${valid ? 'Schema looks good' : 'Unexpected shape'}\n\n${JSON.stringify(json, null, 2)}`;
-  } catch (err) {
-    preview.textContent = `${key}.json failed to parse: ${err.message}`;
+function validateShape(label, data) {
+  switch (label) {
+    case 'config':
+      return data && Array.isArray(data.races) && Array.isArray(data.genders) && Array.isArray(data.aesthetics);
+    case 'names':
+      return data && data.races;
+    case 'professions':
+      return data && Array.isArray(data.professions);
+    case 'towns':
+      return data && Array.isArray(data.towns);
+    case 'traits':
+      return data && Array.isArray(data.traits);
+    case 'ages':
+      return data && data.races;
+    default:
+      return false;
   }
 }
 
-inputs.forEach((input) => input.addEventListener('change', handleFile));
+function renderPreview() {
+  preview.textContent = JSON.stringify(loaded, null, 2) || 'No files loaded yet.';
+}
+
+function handleFile(label, file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const data = JSON.parse(reader.result);
+      if (!validateShape(label, data)) throw new Error('Unexpected shape');
+      loaded[label] = data;
+      renderPreview();
+    } catch (err) {
+      preview.textContent = `${label}: ${err.message}`;
+    }
+  };
+  reader.readAsText(file);
+}
+
+Object.entries(inputs).forEach(([label, input]) => {
+  input?.addEventListener('change', (e) => handleFile(label, e.target.files?.[0]));
+});

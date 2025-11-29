@@ -1,1 +1,1 @@
-// Reserved for shared behaviors; navigation is already static for this build.
+// Placeholder for shared site scripts. Navigation is static in HTML for now.

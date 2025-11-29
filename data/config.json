@@ -1,5 +1,5 @@
 {
-  "notes": "Add more races, genders, or aesthetics here and the dropdowns will populate automatically.",
+  "notes": "Dropdown options for the NPC generator. Extend races, genders, or aesthetics here and the UI will populate automatically.",
   "races": [
     { "id": "human", "label": "Human" },
     { "id": "elf", "label": "Elf" },

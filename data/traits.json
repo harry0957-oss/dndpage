@@ -1,5 +1,5 @@
 {
-  "notes": "Add more traits per slot; include tags (race, gender, profession, town, aesthetic) to guide matching.",
+  "notes": "Narrative traits grouped by slot. Add tags (race, gender, profession id, town id, aesthetic id) to guide matching.",
   "traits": [
     {
       "slot": "physical",

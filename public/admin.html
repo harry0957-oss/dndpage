@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NPC Data Admin</title>
+  <title>NPC Data Helper | Goblin's Village</title>
   <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body class="dark">
@@ -17,36 +17,37 @@
     </header>
 
     <section class="intro">
-      <p class="eyebrow">Local admin helper</p>
-      <h1>Preview & Validate JSON</h1>
-      <p class="lede">Use this page locally to load prospective data files. To publish updates you still need to commit them to the /data folder.</p>
+      <p class="eyebrow">Local Helper</p>
+      <h1>NPC Data Previewer</h1>
+      <p class="lede">Use this page locally to validate JSON before committing changes to the /data folder. Uploading to production still requires a git push.</p>
     </section>
 
     <div class="card">
       <div class="card-head">
-        <h3>Select JSON files</h3>
-        <p class="sub">Files remain in your browser; nothing is uploaded.</p>
+        <h3>Load JSON files</h3>
+        <p class="sub">Preview and validate shape for each generator dataset.</p>
       </div>
-      <div class="form-grid">
-        <label>Config <input type="file" data-key="config" accept="application/json" /></label>
-        <label>Names <input type="file" data-key="names" accept="application/json" /></label>
-        <label>Professions <input type="file" data-key="professions" accept="application/json" /></label>
-        <label>Towns <input type="file" data-key="towns" accept="application/json" /></label>
-        <label>Traits <input type="file" data-key="traits" accept="application/json" /></label>
-        <label>Ages <input type="file" data-key="ages" accept="application/json" /></label>
+      <div class="admin-grid">
+        <label>Config <input type="file" id="configInput" accept="application/json" /></label>
+        <label>Names <input type="file" id="namesInput" accept="application/json" /></label>
+        <label>Professions <input type="file" id="professionsInput" accept="application/json" /></label>
+        <label>Towns <input type="file" id="townsInput" accept="application/json" /></label>
+        <label>Traits <input type="file" id="traitsInput" accept="application/json" /></label>
+        <label>Ages <input type="file" id="agesInput" accept="application/json" /></label>
       </div>
-      <p class="muted small">After validating, replace the files under /data and redeploy.</p>
+      <p class="muted small">Tip: after verifying the JSON below, replace the files in <code>/data</code> and commit the changes.</p>
     </div>
 
     <div class="card">
       <div class="card-head">
         <h3>Preview</h3>
-        <p class="sub">Parsed JSON and validation results.</p>
+        <p class="sub">Validated content will appear here.</p>
       </div>
-      <pre id="preview" class="muted" style="white-space: pre-wrap;">No files loaded.</pre>
+      <pre id="preview" class="preview">No files loaded yet.</pre>
     </div>
-  </div>
 
+    <footer class="footer">Local helper only — publishing still requires manual deployment.</footer>
+  </div>
   <script src="/js/admin-helper.js"></script>
 </body>
 </html>

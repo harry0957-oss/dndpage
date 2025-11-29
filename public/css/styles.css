@@ -1,17 +1,15 @@
 :root {
   --bg: #0b0c10;
-  --panel: #11131a;
-  --panel-strong: #151922;
-  --text: #e6e9f0;
-  --muted: #a4a9b6;
+  --panel: #12141d;
+  --panel-strong: #161926;
+  --text: #e8ecf5;
+  --muted: #a3a8b9;
   --accent: #7ad7f0;
-  --accent-strong: #45b0d6;
+  --accent-strong: #7b6cf6;
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  --radius: 12px;
   --border: 1px solid rgba(255, 255, 255, 0.08);
   --pill: rgba(122, 215, 240, 0.12);
-  --warning: #f7cf5e;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --radius: 12px;
 }
 
 * {
@@ -25,6 +23,7 @@ body.dark {
     radial-gradient(circle at 90% 10%, rgba(247, 207, 94, 0.08), transparent 22%),
     linear-gradient(180deg, #0b0c10 0%, #090a0f 100%);
   color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 .page {
@@ -145,7 +144,9 @@ body.dark {
 }
 
 .form-grid input,
-.form-grid select {
+.form-grid select,
+.admin-grid input,
+.admin-grid textarea {
   background: var(--panel-strong);
   border: var(--border);
   border-radius: 10px;
@@ -175,7 +176,7 @@ body.dark {
 }
 
 .btn.primary {
-  background: linear-gradient(135deg, var(--accent-strong), #7b6cf6);
+  background: linear-gradient(135deg, var(--accent-strong), #7ad7f0);
   color: #0b0c10;
   border: none;
   font-weight: 700;
@@ -249,4 +250,21 @@ body.dark {
   color: var(--muted);
   font-size: 14px;
   text-align: center;
+}
+
+.admin-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.preview {
+  background: var(--panel-strong);
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color: var(--muted);
+  white-space: pre-wrap;
+  max-height: 240px;
+  overflow: auto;
 }

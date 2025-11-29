@@ -1,5 +1,5 @@
 {
-  "notes": "Configure age bands per race for future random age features.",
+  "notes": "Age ranges per race for future randomization features.",
   "races": {
     "human": {
       "adult": [18, 40],

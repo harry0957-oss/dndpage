@@ -1,5 +1,5 @@
 {
-  "notes": "Add new professions with optional weightsByRace to influence random selection.",
+  "notes": "Professions with optional race weighting to bias random generation. Tags help traits match.",
   "professions": [
     {
       "id": "wizard",

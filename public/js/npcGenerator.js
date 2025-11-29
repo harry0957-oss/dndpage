@@ -7,15 +7,17 @@ export const store = {
   professions: null,
   towns: null,
   traits: null,
+  ages: null,
 };
 
 export async function loadData() {
-  const [config, names, professions, towns, traits] = await Promise.all([
+  const [config, names, professions, towns, traits, ages] = await Promise.all([
     fetch('/data/config.json').then((r) => r.json()),
     fetch('/data/names.json').then((r) => r.json()),
     fetch('/data/professions.json').then((r) => r.json()),
     fetch('/data/towns.json').then((r) => r.json()),
     fetch('/data/traits.json').then((r) => r.json()),
+    fetch('/data/ages.json').then((r) => r.json()).catch(() => null),
   ]);
 
   store.config = config;
@@ -23,6 +25,7 @@ export async function loadData() {
   store.professions = professions;
   store.towns = towns;
   store.traits = traits;
+  store.ages = ages;
 }
 
 export function randomFrom(array) {
@@ -89,8 +92,11 @@ export function generateNpc(config) {
 
   const physical = pickTrait('physical', tags);
   const backstory = pickTrait('backstory', tags);
+
   const motivations = [];
-  const motivationPool = (store.traits?.traits || []).filter((t) => t.slot === 'motivation' && (t.tags || []).some((tag) => tags.includes(tag)));
+  const motivationPool = (store.traits?.traits || []).filter(
+    (t) => t.slot === 'motivation' && (t.tags || []).some((tag) => tags.includes(tag))
+  );
   const fallbackPool = (store.traits?.traits || []).filter((t) => t.slot === 'motivation');
   const pool = motivationPool.length ? motivationPool : fallbackPool;
   while (motivations.length < 3 && pool.length) {
