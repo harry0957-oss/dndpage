@@ -13,15 +13,36 @@
       <nav class="nav-links">
         <a class="nav-link active" href="/">Home</a>
         <a class="nav-link" href="/generators.html">Generators</a>
+        <a class="nav-link" href="/admin.html">Data Helper</a>
       </nav>
     </header>
 
     <section class="hero">
-      <p class="eyebrow">Dark Fantasy Toolkit</p>
-      <h1>Build Legends in Minutes</h1>
-      <p class="lede">Craft ready-to-run NPCs with names, hooks, motivations, and voice cues. Extend the JSON data files to suit your world.</p>
-      <div class="form-actions" style="margin-top:16px;">
-        <a class="btn primary" href="/generators.html">Open NPC Generator</a>
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Dark Fantasy Toolkit</p>
+          <h1>Build Legends in Minutes</h1>
+          <p class="lede">Craft ready-to-run NPCs with names, hooks, motivations, voice cues, and visual prompts. Every line is driven by JSON so your Goblin's Village storytellers can expand the world without touching the code.</p>
+          <div class="pill-row">
+            <span class="badge">System Neutral</span>
+            <span class="badge">Fast Table Prep</span>
+            <span class="badge">Lore Friendly</span>
+          </div>
+          <div class="form-actions" style="margin-top:6px;">
+            <a class="btn primary" href="/generators.html">Open NPC Generator</a>
+            <a class="btn" href="/admin.html">Preview Data</a>
+          </div>
+        </div>
+        <div class="highlight-card" aria-hidden="true">
+          <h4>Village Scribes' Notes</h4>
+          <p class="muted">"The goblins demanded a tool that keeps pace with their chaos. Now the tavern has a fresh cast every night."</p>
+          <ul class="list-inline">
+            <li>Hooks &amp; Goals</li>
+            <li>Voice Direction</li>
+            <li>Parchment-ready Copy</li>
+            <li>Image Prompts</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -31,6 +52,28 @@
         <p class="sub">Driven entirely by JSON files you control.</p>
       </div>
       <p class="muted">Dropdowns and narrative traits are pulled from files in the <code>/data</code> folder. Add races, professions, or new traits without touching the JavaScript.</p>
+      <div class="highlight-grid">
+        <div class="highlight-card">
+          <h4>Parchment-perfect Output</h4>
+          <p>Identity, physical cues, motivations, hooks, and voice notes arrive formatted for quick table use.</p>
+        </div>
+        <div class="highlight-card">
+          <h4>Designer Friendly</h4>
+          <p>Writers can expand JSON files directly; no redeploy needed to see updates while testing locally.</p>
+        </div>
+        <div class="highlight-card">
+          <h4>Goblin-tough</h4>
+          <p>Minimal dependencies keep Git conflicts low. Keep your branches tidy and lore stable.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-banner" style="margin-top:16px;">
+      <div>
+        <strong>Ready for Goblin's Village</strong>
+        <p class="muted" style="margin:6px 0 0;">Use this build to preview the front end. The generator lives here; the admin preview sits at <code>/admin.html</code> for quick JSON checks before committing.</p>
+      </div>
+      <a class="btn primary" href="/generators.html">Generate an NPC</a>
     </div>
 
     <footer class="footer">Crafted for tabletop storytellers.</footer>
