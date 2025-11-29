@@ -12,12 +12,12 @@ export const store = {
 
 export async function loadData() {
   const [config, names, professions, towns, traits, ages] = await Promise.all([
-    fetch('/data/config.json').then((r) => r.json()),
-    fetch('/data/names.json').then((r) => r.json()),
-    fetch('/data/professions.json').then((r) => r.json()),
-    fetch('/data/towns.json').then((r) => r.json()),
-    fetch('/data/traits.json').then((r) => r.json()),
-    fetch('/data/ages.json').then((r) => r.json()).catch(() => null),
+    fetch('./data/config.json').then((r) => r.json()),
+    fetch('./data/names.json').then((r) => r.json()),
+    fetch('./data/professions.json').then((r) => r.json()),
+    fetch('./data/towns.json').then((r) => r.json()),
+    fetch('./data/traits.json').then((r) => r.json()),
+    fetch('./data/ages.json').then((r) => r.json()).catch(() => null),
   ]);
 
   store.config = config;
