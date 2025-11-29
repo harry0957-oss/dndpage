@@ -4,22 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NPC Generator | Goblin's Village</title>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <body class="dark">
   <div class="page">
     <header class="site-header">
-      <a class="brand" href="/">Goblin's Village</a>
+      <a class="brand" href="./">Goblin's Village</a>
       <nav class="nav-links">
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link active" href="/generators.html">Generators</a>
+        <a class="nav-link" href="./">Home</a>
+        <a class="nav-link active" href="./generators.html">Generators</a>
+        <a class="nav-link" href="./admin.html">Data Helper</a>
       </nav>
     </header>
 
     <section class="intro">
       <p class="eyebrow">GM Tools</p>
       <h1>NPC Generator</h1>
-      <p class="lede">Create ready-to-play NPCs with identities, motivations, hooks, voice tips, and visual prompts. Everything is driven from editable JSON in the /data folder.</p>
+      <p class="lede">Create ready-to-play NPCs with identities, motivations, hooks, voice tips, and visual prompts. Everything is driven from editable JSON in the <code>/data</code> folder.</p>
+      <div class="pill-row">
+        <span class="badge">Lore-first Output</span>
+        <span class="badge">Copy &amp; Paste Ready</span>
+        <span class="badge">Goblin-approved</span>
+      </div>
     </section>
 
     <div class="generator-layout">
@@ -88,7 +94,7 @@
 
         <div class="card">
           <div class="card-head">
-            <h3>Motivations & Goals</h3>
+            <h3>Motivations &amp; Goals</h3>
             <p class="sub">Use 2–4 threads during play.</p>
           </div>
           <ul id="motivations"></ul>
@@ -121,9 +127,17 @@
     </div>
 
     <div id="toast" class="toast" role="status" aria-live="polite">Summary copied</div>
+    <div class="note-banner" style="margin-top:16px;">
+      <div>
+        <strong>Need to adjust the data?</strong>
+        <p class="muted" style="margin:6px 0 0;">Visit the helper page to load JSON files from your machine, check shapes, and validate before pushing to Git.</p>
+      </div>
+        <a class="btn" href="./admin.html">Open Data Helper</a>
+    </div>
+
     <footer class="footer">Crafted for storytellers who need NPCs fast.</footer>
   </div>
 
-  <script type="module" src="/js/generators-page.js"></script>
+  <script type="module" src="./js/generators-page.js"></script>
 </body>
 </html>
