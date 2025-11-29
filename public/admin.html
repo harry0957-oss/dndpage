@@ -13,13 +13,14 @@
       <nav class="nav-links">
         <a class="nav-link" href="/">Home</a>
         <a class="nav-link" href="/generators.html">Generators</a>
+        <a class="nav-link active" href="/admin.html">Data Helper</a>
       </nav>
     </header>
 
     <section class="intro">
-      <p class="eyebrow">Local Helper</p>
+      <p class="eyebrow">Lorekeeper Workbench</p>
       <h1>NPC Data Previewer</h1>
-      <p class="lede">Use this page locally to validate JSON before committing changes to the /data folder. Uploading to production still requires a git push.</p>
+      <p class="lede">Use this page locally to validate JSON before committing changes to the <code>/data</code> folder. Uploading to production still requires a git push, but this view keeps conflicts away.</p>
     </section>
 
     <div class="card">
@@ -44,6 +45,14 @@
         <p class="sub">Validated content will appear here.</p>
       </div>
       <pre id="preview" class="preview">No files loaded yet.</pre>
+    </div>
+
+    <div class="note-banner" style="margin-top:16px;">
+      <div>
+        <strong>Frontend &amp; Data stay in sync</strong>
+        <p class="muted" style="margin:6px 0 0;">Use this helper to catch malformed entries before merging. The generator page pulls directly from your committed JSON.</p>
+      </div>
+      <a class="btn" href="/generators.html">Back to Generator</a>
     </div>
 
     <footer class="footer">Local helper only — publishing still requires manual deployment.</footer>
