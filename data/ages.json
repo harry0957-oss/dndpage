@@ -1,0 +1,15 @@
+{
+  "notes": "Optional age ranges per race for future random-age features. The UI still allows manual entry.",
+  "races": {
+    "human": {
+      "adult": [18, 40],
+      "middle": [41, 65],
+      "elder": [66, 90]
+    },
+    "elf": {
+      "adult": [60, 200],
+      "middle": [201, 400],
+      "elder": [401, 700]
+    }
+  }
+}

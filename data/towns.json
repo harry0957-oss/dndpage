@@ -1,0 +1,8 @@
+{
+  "notes": "List of towns/locales. Add tags like city, coastal, desert, etc. to influence trait matching.",
+  "towns": [
+    { "id": "baldurs_gate", "label": "Baldur's Gate", "tags": ["city", "coastal"] },
+    { "id": "neverwinter", "label": "Neverwinter", "tags": ["city", "cold"] },
+    { "id": "redbrook", "label": "Redbrook", "tags": ["village", "rural"] }
+  ]
+}
