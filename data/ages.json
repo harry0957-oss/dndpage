@@ -1,5 +1,5 @@
 {
-  "_comment": "Age ranges per race for potential future random age logic. Values are inclusive [min, max] pairs.",
+  "notes": "Configure age bands per race for future random age features.",
   "races": {
     "human": {
       "adult": [18, 40],

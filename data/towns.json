@@ -1,5 +1,5 @@
 {
-  "_comment": "List of available locales. Add towns with tags like city, rural, coastal to influence trait matching.",
+  "notes": "Add towns or locales; tags can be referenced by traits to bias selection.",
   "towns": [
     { "id": "baldurs_gate", "label": "Baldur's Gate", "tags": ["city", "coastal"] },
     { "id": "neverwinter", "label": "Neverwinter", "tags": ["city", "cold"] },

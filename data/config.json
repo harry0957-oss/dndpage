@@ -1,5 +1,5 @@
 {
-  "_comment": "Add or edit races, genders, and aesthetics here. The ids are referenced by the other JSON files and the generator picks them up automatically without JS changes.",
+  "notes": "Add more races, genders, or aesthetics here and the dropdowns will populate automatically.",
   "races": [
     { "id": "human", "label": "Human" },
     { "id": "elf", "label": "Elf" },

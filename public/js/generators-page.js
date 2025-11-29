@@ -1,128 +1,115 @@
-const generatorStore = {
-  config: null,
-  names: null,
-  professions: null,
-  towns: null,
-  traits: null,
-  ages: null,
-  npc: null,
-};
+import { loadData, store, generateNpc } from './npcGenerator.js';
 
-async function loadGeneratorData() {
-  const endpoints = ['config', 'names', 'professions', 'towns', 'traits', 'ages'];
-  const responses = await Promise.all(endpoints.map((key) => fetch(`/data/${key}.json`).then((res) => res.json())));
-  [generatorStore.config, generatorStore.names, generatorStore.professions, generatorStore.towns, generatorStore.traits, generatorStore.ages] =
-    responses;
+const raceSelect = document.getElementById('raceSelect');
+const genderSelect = document.getElementById('genderSelect');
+const ageInput = document.getElementById('ageInput');
+const townSelect = document.getElementById('townSelect');
+const professionSelect = document.getElementById('professionSelect');
+const aestheticSelect = document.getElementById('aestheticSelect');
+const identityEl = document.getElementById('identity');
+const physicalEl = document.getElementById('physical');
+const backstoryEl = document.getElementById('backstory');
+const motivationsEl = document.getElementById('motivations');
+const hookEl = document.getElementById('hook');
+const voiceEl = document.getElementById('voice');
+const visualEl = document.getElementById('visual');
+const toast = document.getElementById('toast');
+
+function option(label, value) {
+  const o = document.createElement('option');
+  o.value = value;
+  o.textContent = label;
+  return o;
 }
 
-function populateGeneratorDropdowns() {
-  const raceSelect = document.getElementById('raceSelect');
-  const genderSelect = document.getElementById('genderSelect');
-  const aestheticSelect = document.getElementById('aestheticSelect');
-  const townSelect = document.getElementById('townSelect');
-  const professionSelect = document.getElementById('professionSelect');
+function populateSelects() {
+  raceSelect.replaceChildren(...store.config.races.map((r) => option(r.label, r.id)));
+  genderSelect.replaceChildren(...store.config.genders.map((g) => option(g.label, g.id)));
+  aestheticSelect.replaceChildren(...store.config.aesthetics.map((a) => option(a.label, a.id)));
 
-  raceSelect.innerHTML = generatorStore.config.races
-    .map((race) => `<option value="${race.id}">${race.label}</option>`)
-    .join('');
+  const professionOptions = [option('Random', 'random'), ...store.professions.professions.map((p) => option(p.label, p.id))];
+  professionSelect.replaceChildren(...professionOptions);
 
-  genderSelect.innerHTML = generatorStore.config.genders
-    .map((gender) => `<option value="${gender.id}">${gender.label}</option>`)
-    .join('');
-
-  aestheticSelect.innerHTML = generatorStore.config.aesthetics
-    .map((aesthetic) => `<option value="${aesthetic.id}">${aesthetic.label}</option>`)
-    .join('');
-
-  const townOptions = generatorStore.towns.towns
-    .map((town) => `<option value="${town.id}">${town.label}</option>`)
-    .join('');
-  townSelect.innerHTML = `<option value="random">Random</option>${townOptions}`;
-
-  const professionOptions = generatorStore.professions.professions
-    .map((profession) => `<option value="${profession.id}">${profession.label}</option>`)
-    .join('');
-  professionSelect.innerHTML = `<option value="random">Random</option>${professionOptions}`;
+  const townOptions = [option('Random', 'random'), ...store.towns.towns.map((t) => option(t.label, t.id))];
+  townSelect.replaceChildren(...townOptions);
 }
 
-function renderNpcOnPage(npc) {
-  document.getElementById('identity').innerHTML = `
-    <div><strong>Name:</strong> ${npc.name}</div>
-    <div><strong>Race:</strong> ${npc.race}</div>
-    <div><strong>Gender:</strong> ${npc.gender}</div>
-    <div><strong>Age:</strong> ${npc.age}</div>
-    <div><strong>Town:</strong> ${npc.townLabel || npc.town}</div>
-    <div><strong>Profession:</strong> ${npc.professionLabel}</div>
+function renderNpc(npc) {
+  identityEl.innerHTML = `
+    <div><strong>Name</strong>${npc.name}</div>
+    <div><strong>Race</strong>${npc.race}</div>
+    <div><strong>Gender</strong>${npc.gender}</div>
+    <div><strong>Age</strong>${npc.age}</div>
+    <div><strong>Town</strong>${npc.townLabel}</div>
+    <div><strong>Profession</strong>${npc.professionLabel}</div>
   `;
-
-  document.getElementById('physical').textContent = npc.physical || 'No description available yet.';
-  document.getElementById('backstory').textContent = npc.backstory || 'No backstory available yet.';
-
-  const motivationsEl = document.getElementById('motivations');
-  motivationsEl.innerHTML = '';
-  npc.motivations.forEach((motivation) => {
+  physicalEl.textContent = npc.physical || 'No description available yet.';
+  backstoryEl.textContent = npc.backstory || 'Mysteries still to uncover.';
+  motivationsEl.replaceChildren(...(npc.motivations || []).map((m) => {
     const li = document.createElement('li');
-    li.textContent = motivation;
-    motivationsEl.appendChild(li);
+    li.textContent = m;
+    return li;
+  }));
+  hookEl.textContent = npc.hook || 'No hook yet';
+  voiceEl.textContent = npc.voice || 'Let the table decide the voice.';
+  visualEl.textContent = npc.visual || 'Imagine their look your way.';
+}
+
+function copySummary(npc) {
+  const motivations = (npc.motivations || []).map((m) => `- ${m}`).join('\n');
+  const text = `
+${npc.name} (${npc.race}, ${npc.gender}, ${npc.age}, ${npc.professionLabel} from ${npc.townLabel})
+Physical: ${npc.physical || 'Unknown'}
+Backstory: ${npc.backstory || 'Unknown'}
+Motivations:\n${motivations || '- None listed'}
+Hook: ${npc.hook || 'None'}
+How to voice: ${npc.voice || 'Decide at the table'}
+Visuals: ${npc.visual || 'Your imagination'}
+  `.trim();
+
+  navigator.clipboard?.writeText(text).then(() => {
+    toast?.classList.add('show');
+    setTimeout(() => toast?.classList.remove('show'), 1500);
   });
-
-  document.getElementById('hook').textContent = npc.hook || '';
-  document.getElementById('voice').textContent = npc.voice || '';
-  document.getElementById('visual').textContent = npc.visual || '';
 }
 
-function currentGeneratorConfig() {
-  return {
-    race: document.getElementById('raceSelect').value,
-    gender: document.getElementById('genderSelect').value,
-    age: Number(document.getElementById('ageInput').value || 0),
-    townId: document.getElementById('townSelect').value,
-    professionId: document.getElementById('professionSelect').value,
-    aesthetic: document.getElementById('aestheticSelect').value,
-  };
-}
+async function init() {
+  await loadData();
+  populateSelects();
 
-function showToast(message) {
-  const toast = document.getElementById('toast');
-  toast.textContent = message;
-  toast.classList.add('visible');
-  setTimeout(() => toast.classList.remove('visible'), 1600);
-}
+  const defaultNpc = generateNpc({
+    raceId: store.config.races[0].id,
+    genderId: store.config.genders[0].id,
+    age: 30,
+    aestheticId: store.config.aesthetics[0].id,
+    professionId: 'random',
+    townId: 'random',
+  });
+  renderNpc(defaultNpc);
 
-async function copyNpcSummary() {
-  if (!generatorStore.npc) return;
-  const npc = generatorStore.npc;
-  const lines = [
-    `${npc.name} (${npc.race}, ${npc.gender}, age ${npc.age}, ${npc.professionLabel}) from ${npc.townLabel || npc.town}.`,
-    `Physical: ${npc.physical}`,
-    `Backstory: ${npc.backstory}`,
-    'Motivations:',
-    ...npc.motivations.map((m) => `- ${m}`),
-    `Hook: ${npc.hook}`,
-    `How to voice: ${npc.voice}`,
-    `Visuals: ${npc.visual}`,
-  ];
-  await navigator.clipboard.writeText(lines.join('\n'));
-  showToast('Summary copied to clipboard');
-}
-
-function attachGeneratorHandlers() {
   document.getElementById('generateBtn').addEventListener('click', () => {
-    const npc = generateNpc(currentGeneratorConfig(), generatorStore);
-    generatorStore.npc = npc;
-    renderNpcOnPage(npc);
+    const npc = generateNpc({
+      raceId: raceSelect.value,
+      genderId: genderSelect.value,
+      age: Number(ageInput.value) || 30,
+      aestheticId: aestheticSelect.value,
+      professionId: professionSelect.value,
+      townId: townSelect.value,
+    });
+    renderNpc(npc);
   });
 
-  document.getElementById('copyBtn').addEventListener('click', copyNpcSummary);
+  document.getElementById('copyBtn').addEventListener('click', () => {
+    const npc = generateNpc({
+      raceId: raceSelect.value,
+      genderId: genderSelect.value,
+      age: Number(ageInput.value) || 30,
+      aestheticId: aestheticSelect.value,
+      professionId: professionSelect.value,
+      townId: townSelect.value,
+    });
+    copySummary(npc);
+  });
 }
 
-async function initGeneratorPage() {
-  await loadGeneratorData();
-  populateGeneratorDropdowns();
-  attachGeneratorHandlers();
-  const npc = generateNpc(currentGeneratorConfig(), generatorStore);
-  generatorStore.npc = npc;
-  renderNpcOnPage(npc);
-}
-
-document.addEventListener('DOMContentLoaded', initGeneratorPage);
+document.addEventListener('DOMContentLoaded', init);

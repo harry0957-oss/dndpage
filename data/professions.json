@@ -1,5 +1,5 @@
 {
-  "_comment": "Add professions with optional tags and race weights to bias random selection.",
+  "notes": "Add new professions with optional weightsByRace to influence random selection.",
   "professions": [
     {
       "id": "wizard",

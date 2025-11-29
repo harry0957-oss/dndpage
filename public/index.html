@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>D&D NPC Crafter</title>
-  <link rel="stylesheet" href="/public/css/styles.css" />
+  <title>Goblin's Village | Home</title>
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body class="dark">
   <div class="page">
@@ -16,107 +16,25 @@
       </nav>
     </header>
 
-    <header class="hero">
-      <div class="hero-left">
-        <p class="eyebrow">GM Utility</p>
-        <h1>D&D NPC Crafter</h1>
-        <p class="lede">Generate NPCs on demand using curated JSON data. Craft identities, hooks, and visuals in a single click.</p>
-        <div class="hero-actions">
-          <button id="generateBtn" class="btn primary">Generate NPC</button>
-          <button id="copyBtn" class="btn">Copy Summary</button>
-        </div>
+    <section class="hero">
+      <p class="eyebrow">Dark Fantasy Toolkit</p>
+      <h1>Build Legends in Minutes</h1>
+      <p class="lede">Use the NPC Generator to conjure named characters with hooks, motivations, and voice cues. Extend the data files to suit your world.</p>
+      <div class="form-actions" style="margin-top:16px;">
+        <a class="btn primary" href="/generators.html">Open NPC Generator</a>
       </div>
-      <div class="hero-right card">
-        <h2>Inputs</h2>
-        <form id="npcForm" class="form-grid">
-          <label>
-            <span>Race</span>
-            <select id="raceSelect" required></select>
-          </label>
-          <label>
-            <span>Gender</span>
-            <select id="genderSelect" required></select>
-          </label>
-          <label>
-            <span>Age</span>
-            <input type="number" id="ageInput" min="10" max="120" value="30" />
-          </label>
-          <label>
-            <span>Town / Locale</span>
-            <select id="townSelect"></select>
-          </label>
-          <label>
-            <span>Profession</span>
-            <select id="professionSelect"></select>
-          </label>
-          <label>
-            <span>Aesthetic / Visual Style</span>
-            <select id="aestheticSelect"></select>
-          </label>
-        </form>
+    </section>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>How it works</h3>
+        <p class="sub">Driven entirely by JSON data you can edit.</p>
       </div>
-    </header>
+      <p class="muted">The generator pulls dropdown options and narrative traits from files in the <code>/data</code> folder. Add races, professions, or new traits without touching the JavaScript.</p>
+    </div>
 
-    <main class="results-grid">
-      <section class="card">
-        <div class="card-head">
-          <h3>NPC Identity</h3>
-          <p class="sub">Name, race, profession, age, and locale.</p>
-        </div>
-        <div class="identity" id="identity"></div>
-      </section>
-
-      <section class="card">
-        <div class="card-head">
-          <h3>Physical Description</h3>
-          <p class="sub">What players notice first.</p>
-        </div>
-        <p id="physical"></p>
-      </section>
-
-      <section class="card">
-        <div class="card-head">
-          <h3>Backstory</h3>
-          <p class="sub">Where they come from.</p>
-        </div>
-        <p id="backstory"></p>
-      </section>
-
-      <section class="card">
-        <div class="card-head">
-          <h3>Motivations & Goals</h3>
-          <p class="sub">Use 2–3 to guide play.</p>
-        </div>
-        <ul id="motivations"></ul>
-      </section>
-
-      <section class="card">
-        <div class="card-head">
-          <h3>Hook</h3>
-          <p class="sub">Player facing reason to engage.</p>
-        </div>
-        <div id="hook" class="pill"></div>
-      </section>
-
-      <section class="card">
-        <div class="card-head">
-          <h3>How to Voice</h3>
-          <p class="sub">Tone and cadence reminders.</p>
-        </div>
-        <p id="voice"></p>
-      </section>
-
-      <section class="card">
-        <div class="card-head">
-          <h3>Visuals</h3>
-          <p class="sub">Prompt style description for art or VTTs.</p>
-        </div>
-        <p id="visual"></p>
-      </section>
-    </main>
+    <footer class="footer">Crafted for tabletop storytellers.</footer>
   </div>
-
-  <script src="/public/js/npcGenerator.js"></script>
-  <script src="/public/js/main.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 </html>

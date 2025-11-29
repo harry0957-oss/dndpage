@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NPC Generator | Goblin's Village</title>
-  <link rel="stylesheet" href="/public/css/styles.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body class="dark">
   <div class="page">
@@ -19,14 +19,14 @@
     <section class="intro">
       <p class="eyebrow">GM Tools</p>
       <h1>NPC Generator</h1>
-      <p class="lede">Craft ready-to-play NPCs with names, personalities, hooks, voice tips, and visual prompts inspired by dark fantasy taverns and bustling cities.</p>
+      <p class="lede">Create ready-to-run NPCs with identities, motivations, hooks, and visual prompts. All content is pulled from editable JSON in the /data folder.</p>
     </section>
 
     <div class="generator-layout">
       <section class="card input-card">
         <div class="card-head">
           <h3>Inputs</h3>
-          <p class="sub">Choose specifics or roll the dice with Random options.</p>
+          <p class="sub">Choose specifics or keep things random.</p>
         </div>
         <form id="npcForm" class="form-grid">
           <label>
@@ -39,7 +39,7 @@
           </label>
           <label>
             <span>Age</span>
-            <input type="number" id="ageInput" min="10" max="750" value="30" />
+            <input type="number" id="ageInput" min="10" max="800" value="30" />
           </label>
           <label>
             <span>Town / Locale</span>
@@ -50,15 +50,15 @@
             <select id="professionSelect"></select>
           </label>
           <label>
-            <span>Aesthetic / Visual Style</span>
+            <span>Aesthetic</span>
             <select id="aestheticSelect"></select>
           </label>
         </form>
         <div class="form-actions">
-          <button id="generateBtn" class="btn primary">Generate NPC</button>
-          <button id="copyBtn" class="btn">Copy Summary</button>
+          <button id="generateBtn" class="btn primary" type="button">Generate NPC</button>
+          <button id="copyBtn" class="btn" type="button">Copy Summary</button>
         </div>
-        <p class="muted small">All options are driven by JSON files in /data so you can extend races, professions, towns, and aesthetics without changing the code.</p>
+        <p class="muted small">Add new races, professions, or aesthetics by updating the JSON files. The generator will pick them up automatically.</p>
       </section>
 
       <section class="output-column">
@@ -73,7 +73,7 @@
         <div class="card">
           <div class="card-head">
             <h3>Physical Description</h3>
-            <p class="sub">First impressions in the torchlight.</p>
+            <p class="sub">First impressions by torchlight.</p>
           </div>
           <p id="physical"></p>
         </div>
@@ -81,7 +81,7 @@
         <div class="card">
           <div class="card-head">
             <h3>Backstory</h3>
-            <p class="sub">History that shapes their choices.</p>
+            <p class="sub">What shaped them.</p>
           </div>
           <p id="backstory"></p>
         </div>
@@ -89,7 +89,7 @@
         <div class="card">
           <div class="card-head">
             <h3>Motivations & Goals</h3>
-            <p class="sub">Use 2–4 threads to drive scenes.</p>
+            <p class="sub">Use 2–4 threads during play.</p>
           </div>
           <ul id="motivations"></ul>
         </div>
@@ -97,7 +97,7 @@
         <div class="card">
           <div class="card-head">
             <h3>Hook</h3>
-            <p class="sub">A tag to pull players in.</p>
+            <p class="sub">A reason to interact.</p>
           </div>
           <div id="hook" class="pill"></div>
         </div>
@@ -105,7 +105,7 @@
         <div class="card">
           <div class="card-head">
             <h3>How to Voice</h3>
-            <p class="sub">Tone and cadence cues.</p>
+            <p class="sub">Tone, cadence, and quirks.</p>
           </div>
           <p id="voice"></p>
         </div>
@@ -121,9 +121,9 @@
     </div>
 
     <div id="toast" class="toast" role="status" aria-live="polite">Summary copied</div>
+    <footer class="footer">Crafted for storytellers who need NPCs fast.</footer>
   </div>
 
-  <script src="/public/js/npcGenerator.js"></script>
-  <script src="/public/js/generators-page.js"></script>
+  <script type="module" src="/js/generators-page.js"></script>
 </body>
 </html>

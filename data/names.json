@@ -1,5 +1,5 @@
 {
-  "_comment": "Extend by adding more races and gender buckets. Each bucket is a list of full names used by pickName().",
+  "notes": "Extend with new race keys or add more names under each gender (male, female, neutral).",
   "races": {
     "human": {
       "male": ["Darin Crowe", "Harlan Pike"],
