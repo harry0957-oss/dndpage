@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NPC Generator | Goblin's Village</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="dark">
+  <div class="page">
+    <header class="site-header">
+      <a class="brand" href="/">Goblin's Village</a>
+      <nav class="nav-links">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link active" href="/generators.html">Generators</a>
+      </nav>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">GM Tools</p>
+      <h1>NPC Generator</h1>
+      <p class="lede">Create ready-to-play NPCs with identities, motivations, hooks, voice tips, and visual prompts. Everything is driven from editable JSON in the /data folder.</p>
+    </section>
+
+    <div class="generator-layout">
+      <section class="card input-card">
+        <div class="card-head">
+          <h3>Inputs</h3>
+          <p class="sub">Choose specifics or keep things random.</p>
+        </div>
+        <form id="npcForm" class="form-grid">
+          <label>
+            <span>Race</span>
+            <select id="raceSelect" required></select>
+          </label>
+          <label>
+            <span>Gender</span>
+            <select id="genderSelect" required></select>
+          </label>
+          <label>
+            <span>Age</span>
+            <input type="number" id="ageInput" min="10" max="800" value="30" />
+          </label>
+          <label>
+            <span>Town / Locale</span>
+            <select id="townSelect"></select>
+          </label>
+          <label>
+            <span>Profession</span>
+            <select id="professionSelect"></select>
+          </label>
+          <label>
+            <span>Aesthetic</span>
+            <select id="aestheticSelect"></select>
+          </label>
+        </form>
+        <div class="form-actions">
+          <button id="generateBtn" class="btn primary" type="button">Generate NPC</button>
+          <button id="copyBtn" class="btn" type="button">Copy Summary</button>
+        </div>
+        <p class="muted small">Add new races, professions, or aesthetics by updating the JSON files. The generator will pick them up automatically.</p>
+      </section>
+
+      <section class="output-column">
+        <div class="card">
+          <div class="card-head">
+            <h3>Identity</h3>
+            <p class="sub">Name, origin, and day-to-day role.</p>
+          </div>
+          <div class="identity" id="identity"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Physical Description</h3>
+            <p class="sub">First impressions by torchlight.</p>
+          </div>
+          <p id="physical"></p>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Backstory</h3>
+            <p class="sub">What shaped them.</p>
+          </div>
+          <p id="backstory"></p>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Motivations & Goals</h3>
+            <p class="sub">Use 2–4 threads during play.</p>
+          </div>
+          <ul id="motivations"></ul>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Hook</h3>
+            <p class="sub">A reason to interact.</p>
+          </div>
+          <div id="hook" class="pill"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>How to Voice</h3>
+            <p class="sub">Tone, cadence, and quirks.</p>
+          </div>
+          <p id="voice"></p>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Visuals</h3>
+            <p class="sub">Prompt-style art direction.</p>
+          </div>
+          <p id="visual"></p>
+        </div>
+      </section>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite">Summary copied</div>
+    <footer class="footer">Crafted for storytellers who need NPCs fast.</footer>
+  </div>
+
+  <script type="module" src="/js/generators-page.js"></script>
+</body>
+</html>
